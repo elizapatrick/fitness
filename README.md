@@ -24,6 +24,8 @@ npm install
 npm run dev
 ```
 
+Wichtig: Starte nicht direkt `src/main.jsx` mit Node. Die Datei wird von Vite gebundelt, daher muss das Projekt über `npm run dev` oder `npm start` laufen.
+
 MongoDB Beispiel-Daten importieren (von Projekt-Root):
 
 ```bash
