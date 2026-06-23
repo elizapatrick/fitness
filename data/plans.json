@@ -1,0 +1,5 @@
+[
+  {"_id": {"$oid": "200000000000000000000001"}, "name": "Anfänger Plan", "beschreibung": "3x pro Woche Ganzkörper", "trainingIds": ["100000000000000000000001","100000000000000000000005"]},
+  {"_id": {"$oid": "200000000000000000000002"}, "name": "Kraft Aufbau", "beschreibung": "Split-Plan für Muskelaufbau", "trainingIds": ["100000000000000000000001","100000000000000000000003"]},
+  {"_id": {"$oid": "200000000000000000000003"}, "name": "Mobility Fokus", "beschreibung": "Regeneration mit Mobility Einheiten", "trainingIds": ["100000000000000000000004"]}
+]

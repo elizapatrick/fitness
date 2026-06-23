@@ -1,0 +1,4 @@
+[
+  {"_id": {"$oid": "400000000000000000000001"}, "username": "max", "email": "max@example.com", "gewicht": 82},
+  {"_id": {"$oid": "400000000000000000000002"}, "username": "anna", "email": "anna@example.com", "gewicht": 60}
+]

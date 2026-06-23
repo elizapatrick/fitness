@@ -1,0 +1,7 @@
+[
+  {"_id": {"$oid": "100000000000000000000001"}, "titel": "Brust & Trizeps", "datum": {"$date": "2026-05-01T00:00:00Z"}, "dauer": 75, "trainingsart": "Krafttraining", "exerciseIds": ["000000000000000000000001","000000000000000000000007"]},
+  {"_id": {"$oid": "100000000000000000000002"}, "titel": "Beine intensiv", "datum": {"$date": "2026-05-05T00:00:00Z"}, "dauer": 60, "trainingsart": "Krafttraining", "exerciseIds": ["000000000000000000000002","000000000000000000000008"]},
+  {"_id": {"$oid": "100000000000000000000003"}, "titel": "Rücken & Bizeps", "datum": {"$date": "2026-05-08T00:00:00Z"}, "dauer": 70, "trainingsart": "Krafttraining", "exerciseIds": ["000000000000000000000003","000000000000000000000006"]},
+  {"_id": {"$oid": "100000000000000000000004"}, "titel": "Mobility & Core", "datum": {"$date": "2026-05-10T00:00:00Z"}, "dauer": 45, "trainingsart": "Mobilität", "exerciseIds": ["000000000000000000000009"]},
+  {"_id": {"$oid": "100000000000000000000005"}, "titel": "Full Body", "datum": {"$date": "2026-05-12T00:00:00Z"}, "dauer": 55, "trainingsart": "Kondition", "exerciseIds": ["000000000000000000000004","000000000000000000000002"]}
+]

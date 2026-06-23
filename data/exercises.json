@@ -1,0 +1,12 @@
+[
+  {"_id": {"$oid": "000000000000000000000001"}, "name": "Bankdrücken", "muskelgruppe": "Brust", "beschreibung": "Langhantel Brustübung"},
+  {"_id": {"$oid": "000000000000000000000002"}, "name": "Kniebeuge", "muskelgruppe": "Beine", "beschreibung": "Grundübung Beine"},
+  {"_id": {"$oid": "000000000000000000000003"}, "name": "Kreuzheben", "muskelgruppe": "Rücken", "beschreibung": "Rückenübung"},
+  {"_id": {"$oid": "000000000000000000000004"}, "name": "Klimmzug", "muskelgruppe": "Rücken", "beschreibung": "Eigengewichtübung"},
+  {"_id": {"$oid": "000000000000000000000005"}, "name": "Schulterdrücken", "muskelgruppe": "Schultern", "beschreibung": "Schulter Übung"},
+  {"_id": {"$oid": "000000000000000000000006"}, "name": "Bizepscurls", "muskelgruppe": "Arme", "beschreibung": "Bizeps Übung"},
+  {"_id": {"$oid": "000000000000000000000007"}, "name": "Trizepsdrücken", "muskelgruppe": "Arme", "beschreibung": "Trizeps Übung"},
+  {"_id": {"$oid": "000000000000000000000008"}, "name": "Ausfallschritt", "muskelgruppe": "Beine", "beschreibung": "Bein Übung"},
+  {"_id": {"$oid": "000000000000000000000009"}, "name": "Plank", "muskelgruppe": "Core", "beschreibung": "Core Übung"},
+  {"_id": {"$oid": "000000000000000000000010"}, "name": "Face Pull", "muskelgruppe": "Schultern", "beschreibung": "Schulterstabilität"}
+]
