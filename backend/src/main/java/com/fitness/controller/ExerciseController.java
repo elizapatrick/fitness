@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/exercises")
+@CrossOrigin(origins = "*")
 public class ExerciseController {
     private final ExerciseService service;
 

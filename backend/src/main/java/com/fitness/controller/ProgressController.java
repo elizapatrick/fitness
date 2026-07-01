@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/progress")
+@CrossOrigin(origins = "*")
 public class ProgressController {
     private final ProgressService service;
 

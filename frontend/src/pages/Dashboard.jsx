@@ -5,14 +5,37 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 export default function Dashboard(){
   const [stats, setStats] = useState(null)
   const [chart, setChart] = useState({weightSeries: []})
+  const [error, setError] = useState('')
 
   useEffect(()=>{
-    fetch('/api/statistics').then(r=>r.json()).then(setStats)
-    fetch('/api/progress/chart').then(r=>r.json()).then(setChart)
+    const fetchJson = async (url) => {
+      const response = await fetch(url)
+      const payload = await response.json().catch(() => ({}))
+      if (!response.ok) {
+        const message = payload?.error || `Request failed: ${response.status}`
+        throw new Error(message)
+      }
+      return payload
+    }
+
+    Promise.all([fetchJson('/api/statistics'), fetchJson('/api/progress/chart')])
+      .then(([statsData, chartData]) => {
+        setStats(statsData)
+        setChart(chartData)
+        setError('')
+      })
+      .catch((err) => {
+        setError(err.message || 'Backend request failed')
+      })
   },[])
 
   return (
     <div>
+      {error && (
+        <Typography color="error" sx={{ mb: 2 }}>
+          Backend error: {error}
+        </Typography>
+      )}
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <Card><CardContent>

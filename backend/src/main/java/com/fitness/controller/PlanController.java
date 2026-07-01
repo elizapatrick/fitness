@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/plans")
+@CrossOrigin(origins = "*")
 public class PlanController {
     private final PlanService service;
 

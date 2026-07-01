@@ -1,0 +1,13 @@
+# IDE and editor metadata
+.idea/
+.vscode/
+**/.idea/
+
+# Build output and generated dependencies
+**/target/
+**/dist/
+**/node_modules/
+
+# Common local/cache files
+*.log
+.DS_Store

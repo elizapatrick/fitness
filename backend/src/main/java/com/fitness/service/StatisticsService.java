@@ -18,7 +18,7 @@ public class StatisticsService {
     private final ProgressRepository progressRepo;
 
     public StatisticsService(TrainingRepository trainingRepo, ExerciseRepository exerciseRepo,
-            ProgressRepository progressRepo) {
+                             ProgressRepository progressRepo) {
         this.trainingRepo = trainingRepo;
         this.exerciseRepo = exerciseRepo;
         this.progressRepo = progressRepo;
@@ -44,10 +44,10 @@ public class StatisticsService {
 
         Map<String, Object> progressPerMonth = new TreeMap<>();
         perMonth.forEach((ym, list) -> {
-            progressPerMonth.put(ym.toString(), Map.of(
+            progressPerMonth.put(ym.toString(), Map.<String, Object>of(
                     "entries", list.size(),
-                    "averageWeight",
-                    list.stream().mapToDouble(p -> p.getGewicht() == null ? 0 : p.getGewicht()).average().orElse(0)));
+                    "averageWeight", list.stream().mapToDouble(p -> p.getGewicht() == null ? 0 : p.getGewicht()).average().orElse(0)
+            ));
         });
 
         map.put("progressPerMonth", progressPerMonth);
@@ -56,14 +56,23 @@ public class StatisticsService {
 
     public Map<String, Object> getProgressChartData() {
         List<Progress> progresses = progressRepo.findAll();
+
         List<Map<String, Object>> weightSeries = progresses.stream()
-                .sorted(Comparator.comparing(Progress::getDatum))
-                .map(p -> Map.of("date", p.getDatum(), "weight", p.getGewicht(), "exerciseId", p.getExerciseId()))
+                .sorted(Comparator.comparing(Progress::getDatum, Comparator.nullsLast(Comparator.naturalOrder())))
+                .map(p -> Map.<String, Object>of(
+                        "date", p.getDatum() != null ? p.getDatum().toString() : "",
+                        "weight", p.getGewicht() == null ? 0 : p.getGewicht(),
+                        "exerciseId", p.getExerciseId() != null ? p.getExerciseId() : ""
+                ))
                 .collect(Collectors.toList());
 
         List<Map<String, Object>> repSeries = progresses.stream()
-                .sorted(Comparator.comparing(Progress::getDatum))
-                .map(p -> Map.of("date", p.getDatum(), "reps", p.getWiederholungen(), "exerciseId", p.getExerciseId()))
+                .sorted(Comparator.comparing(Progress::getDatum, Comparator.nullsLast(Comparator.naturalOrder())))
+                .map(p -> Map.<String, Object>of(
+                        "date", p.getDatum() != null ? p.getDatum().toString() : "",
+                        "reps", p.getWiederholungen() == null ? 0 : p.getWiederholungen(),
+                        "exerciseId", p.getExerciseId() != null ? p.getExerciseId() : ""
+                ))
                 .collect(Collectors.toList());
 
         return Map.of("weightSeries", weightSeries, "repSeries", repSeries);
