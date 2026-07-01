@@ -23,11 +23,11 @@ public class TrainingController {
     @PostMapping
     public ResponseEntity<Training> create(@Valid @RequestBody TrainingDTO dto) {
         Training t = new Training();
-        t.setTitel(dto.getTitel());
+        t.setPlanId(dto.getPlanId());
         t.setDatum(dto.getDatum());
-        t.setDauer(dto.getDauer());
-        t.setTrainingsart(dto.getTrainingsart());
-        t.setExerciseIds(dto.getExerciseIds());
+        t.setDauer_minuten(dto.getDauerMinuten() == null ? 0 : dto.getDauerMinuten());
+        t.setNotizen(dto.getNotizen());
+        t.setUebungIds(dto.getUebungIds());
         Training created = service.create(t);
         return ResponseEntity.created(URI.create("/api/trainings/" + created.getId())).body(created);
     }
@@ -45,11 +45,11 @@ public class TrainingController {
     @PutMapping("/{id}")
     public Training update(@PathVariable String id, @Valid @RequestBody TrainingDTO dto) {
         Training t = new Training();
-        t.setTitel(dto.getTitel());
+        t.setPlanId(dto.getPlanId());
         t.setDatum(dto.getDatum());
-        t.setDauer(dto.getDauer());
-        t.setTrainingsart(dto.getTrainingsart());
-        t.setExerciseIds(dto.getExerciseIds());
+        t.setDauer_minuten(dto.getDauerMinuten() == null ? 0 : dto.getDauerMinuten());
+        t.setNotizen(dto.getNotizen());
+        t.setUebungIds(dto.getUebungIds());
         return service.update(id, t);
     }
 
@@ -60,7 +60,9 @@ public class TrainingController {
     }
 
     @GetMapping("/filter")
-    public List<Training> filter(@RequestParam String type) {
-        return service.filterByType(type);
+    public List<Training> filter(@RequestParam(required = false) String planId,
+            @RequestParam(required = false) String type) {
+        String resolvedPlanId = planId != null ? planId : type;
+        return resolvedPlanId == null ? service.list() : service.filterByPlanId(resolvedPlanId);
     }
 }

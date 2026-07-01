@@ -23,10 +23,12 @@ public class ProgressController {
     @PostMapping
     public ResponseEntity<Progress> create(@Valid @RequestBody ProgressDTO dto) {
         Progress p = new Progress();
-        p.setExerciseId(dto.getExerciseId());
-        p.setGewicht(dto.getGewicht());
-        p.setWiederholungen(dto.getWiederholungen());
+        p.setBenutzerId(dto.getBenutzerId());
+        p.setUebungsId(dto.getUebungsId());
         p.setDatum(dto.getDatum());
+        p.setWert(dto.getWert());
+        p.setEinheit(dto.getEinheit());
+        p.setZiel(dto.getZiel());
         Progress created = service.create(p);
         return ResponseEntity.created(URI.create("/api/progress/" + created.getId())).body(created);
     }
@@ -39,10 +41,12 @@ public class ProgressController {
     @PutMapping("/{id}")
     public Progress update(@PathVariable String id, @Valid @RequestBody ProgressDTO dto) {
         Progress p = new Progress();
-        p.setExerciseId(dto.getExerciseId());
-        p.setGewicht(dto.getGewicht());
-        p.setWiederholungen(dto.getWiederholungen());
+        p.setBenutzerId(dto.getBenutzerId());
+        p.setUebungsId(dto.getUebungsId());
         p.setDatum(dto.getDatum());
+        p.setWert(dto.getWert());
+        p.setEinheit(dto.getEinheit());
+        p.setZiel(dto.getZiel());
         return service.update(id, p);
     }
 

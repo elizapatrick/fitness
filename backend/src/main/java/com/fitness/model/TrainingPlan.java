@@ -1,23 +1,23 @@
 package com.fitness.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-import java.util.List;
-
-@Document(collection = "plans")
+@Document(collection = "trainingplans")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrainingPlan {
+
     @Id
     private String id;
+    private String benutzerId;
     private String name;
-    private String beschreibung;
-    private List<String> trainingIds;
+    private String ziel;
+    private int wochen_dauer;
 }

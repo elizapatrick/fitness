@@ -38,7 +38,7 @@ public class TrainingService {
         repo.deleteById(id);
     }
 
-    public List<Training> filterByType(String type) {
-        return repo.findByTrainingsart(type);
+    public List<Training> filterByPlanId(String planId) {
+        return repo.findByPlanId(planId);
     }
 }

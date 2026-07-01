@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-
 @Document(collection = "progress")
 @Data
 @Builder
@@ -17,8 +15,10 @@ import java.time.LocalDate;
 public class Progress {
     @Id
     private String id;
-    private String exerciseId;
-    private Double gewicht;
-    private Integer wiederholungen;
-    private LocalDate datum;
+    private String benutzerId;
+    private String uebungsId;
+    private String datum;
+    private double wert;
+    private String einheit;
+    private String ziel;
 }

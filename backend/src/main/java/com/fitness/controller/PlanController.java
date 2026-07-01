@@ -23,9 +23,10 @@ public class PlanController {
     @PostMapping
     public ResponseEntity<TrainingPlan> create(@Valid @RequestBody PlanDTO dto) {
         TrainingPlan p = new TrainingPlan();
+        p.setBenutzerId(dto.getBenutzerId());
         p.setName(dto.getName());
-        p.setBeschreibung(dto.getBeschreibung());
-        p.setTrainingIds(dto.getTrainingIds());
+        p.setZiel(dto.getZiel());
+        p.setWochen_dauer(dto.getWochenDauer() == null ? 0 : dto.getWochenDauer());
         TrainingPlan created = service.create(p);
         return ResponseEntity.created(URI.create("/api/plans/" + created.getId())).body(created);
     }
@@ -38,9 +39,10 @@ public class PlanController {
     @PutMapping("/{id}")
     public TrainingPlan update(@PathVariable String id, @Valid @RequestBody PlanDTO dto) {
         TrainingPlan p = new TrainingPlan();
+        p.setBenutzerId(dto.getBenutzerId());
         p.setName(dto.getName());
-        p.setBeschreibung(dto.getBeschreibung());
-        p.setTrainingIds(dto.getTrainingIds());
+        p.setZiel(dto.getZiel());
+        p.setWochen_dauer(dto.getWochenDauer() == null ? 0 : dto.getWochenDauer());
         return service.update(id, p);
     }
 
